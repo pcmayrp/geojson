@@ -1,0 +1,263 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My leaflet Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+ integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+ crossorigin="" />
+ 
+ <!-- W3 CSS template -->
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+ 
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+ crossorigin=""></script>
+ <style>
+ #mapid {
+ height: 800px;
+ }
+ </style>
+</head>
+<body>
+    <div class="w3-row">
+        <div id="mapid" class="w3-half"></div>
+        <div id="content" class="w3-half">
+        <table class="w3-table w3-striped">
+        <tr>
+        <th>ชื่อสถานที่ท่องเที่ยว</th>
+        <th>ประเภท</th>
+        <th>ระดับ</th>
+        </tr>
+        <tr>
+        <td>น้ำตก A</td>
+        <td>ธรรมชาติ</td>
+        <td>A</td>
+        </tr>
+        </table>
+        </div>
+        </div>
+
+<script>
+    var map = L.map("mapid").setView([13.673916006493371, 101.06708945280282], 11);
+    var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+    var gsat = L.tileLayer("https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}").addTo(map);
+    var OpenStreetMap_France = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png').addTo(map);
+    var baseMaps = {
+ OSM: osm,
+ GoogleSat: gsat,
+ OSM_France: OpenStreetMap_France,
+ };
+//add data
+    var tourpoint = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "สวนสมเด็จพระศรีนครินทร์ฉะเชิงเทรา",
+        "type": "Natural",
+        "level": 9
+      },
+      "geometry": {
+        "coordinates": [
+          101.06689202273884,
+          13.68757279681759
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "วัดโสธรวรารามวรวิหาร",
+        "type": "Culture",
+        "level": 10
+      },
+      "geometry": {
+        "coordinates": [
+          101.06741266613585,
+          13.673772520250182
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ตลาดบ้านใหม่ 100 ปี",
+        "type": "Special",
+        "level": 8
+      },
+      "geometry": {
+        "coordinates": [
+          101.09009013641918,
+          13.69724139417525
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "คุ้มวิมานดิน",
+        "type": "Natural",
+        "level": 8
+      },
+      "geometry": {
+        "coordinates": [
+          101.18719718462239,
+          13.7556403848116
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "วัดโพรงอากาศ",
+        "type": "Cultural",
+        "level": 9
+      },
+      "geometry": {
+        "coordinates": [
+          101.05713581055312,
+          13.796726336868062
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "วัดชมโพธาราม",
+        "type": "Cultural",
+        "level": 8
+      },
+      "geometry": {
+        "coordinates": [
+          101.04851958874713,
+          13.675433464973764
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "มินิมูร่าห์ ฟาร์ม",
+        "type": "Natural",
+        "level": 10
+      },
+      "geometry": {
+        "coordinates": [
+          101.13159978690675,
+          13.603113719037424
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "โรบินสันไลฟ์สไตล์เซ็นเตอร์",
+        "type": "Special",
+        "level": 10
+      },
+      "geometry": {
+        "coordinates": [
+          101.0485116338636,
+          13.668440178929217
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "วัดหงษ์ทอง",
+        "type": "Cultural",
+        "level": 10
+      },
+      "geometry": {
+        "coordinates": [
+          100.87226455088131,
+          13.473699341231509
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "วัดปากน้ำโจ้โล้",
+        "type": "Cultural",
+        "level": 9
+      },
+      "geometry": {
+        "coordinates": [
+          101.2091883252312,
+          13.741989875730411
+        ],
+        "type": "Point"
+      }
+    }
+  ]
+}
+
+  //interaction by mouseover
+  var tourLayer = L.geoJSON(tourpoint, {
+ pointToLayer: function (feature, latlng) {
+ return L.marker(latlng).bindPopup(feature.properties.name);
+ },
+ onEachFeature: function (feature, layer) {
+ layer.on("mouseover", function () {
+ document
+ .getElementById(feature.properties.name)
+ .classList.add("w3-red");
+ });
+ 
+ layer.on("mouseout", function () {
+ document
+ .getElementById(feature.properties.name)
+ .classList.remove("w3-red");
+ });
+ },
+ }).addTo(map);
+ 
+ var cont = "";
+ cont += "<table class='w3-table w3-striped'>";
+ cont += "<tr>";
+ cont += "<th>ชื่อแหล่งท่องเที่ยว</th>";
+ cont += "<th>ประเภท</th>";
+ cont += "<th>ระดับ</th>";
+ cont += "</tr>";
+ for (let i in tourpoint.features) {
+ cont += "<tr id=" + tourpoint.features[i].properties.name + ">";
+ cont += "<td>" + tourpoint.features[i].properties.name + "</td>";
+ cont += "<td>" + tourpoint.features[i].properties.type + "</td>";
+ cont += "<td>" + tourpoint.features[i].properties.level + "</td>";
+ cont += "</tr>";
+ }
+ cont += "</table>";
+ console.log(cont);
+ document.getElementById("content").innerHTML = cont;
+
+ var overlays = {สถานที่ท่องเที่ยว: tourLayer};
+ //add leyer control
+ L.control.layers(baseMaps, overlays).addTo(map);
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
